@@ -1,0 +1,3 @@
+172.56.4.2 www.amazon.com
+172.56.4.2 www.intranet.in
+172.42.2.5 www.google.com
