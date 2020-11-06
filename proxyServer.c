@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     	if(buffer[i]=='*')
 			break;
     }
-    for(j=i+1;i<valread;j++)
+    for(j=i+1;j<valread;j++)
     {
     	if(buffer[j]=='*')
 			break;
