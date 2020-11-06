@@ -11,6 +11,8 @@ int main(int argc, char *argv[])
     struct sockaddr_in serv_addr; 
     char buffer[1024];
     memset(buffer,0,1024); 
+   //creating the socket of the client using the socket function present in socket.h header file.
+   //AF_INET denoted IPv4 Address and SOCK_STREAM is used to denote that its TCP that is being used.
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) 
     { 
         printf("\n Socket creation error \n"); 
@@ -18,9 +20,11 @@ int main(int argc, char *argv[])
     } 
    
     serv_addr.sin_family = AF_INET; 
+   //htons is used to convert the host byte order to network byte order i.e from little endian format to big endian format.
     serv_addr.sin_port = htons(PORT);
 
     // Convert IPv4 and IPv6 addresses from text to binary form 
+   // inet_pton() function converts an Internet address in its standard text format into its numeric binary form
     if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0)  
     { 
         printf("\nInvalid address/ Address not supported \n"); 
@@ -36,7 +40,9 @@ int main(int argc, char *argv[])
     char s[100]; 
     printf("Enter the domain or ip address:\n");
     scanf("%s",s);
-    
+   
+    //ssize_t send(int socket, const void *buffer, size_t length, int flags);
+
     send(sock , argv[1] , strlen(argv[1]) , 0 );
     send(sock , "*" , 1 , 0 );
     send(sock , argv[2] , strlen(argv[2]) , 0 );
